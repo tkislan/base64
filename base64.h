@@ -3,7 +3,7 @@
 
 #include <string>
 
-const char kB64Alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+const char kBase64Alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     "abcdefghijklmnopqrstuvwxyz"
     "0123456789+/";
 
@@ -26,7 +26,7 @@ class Base64 {
         a3_to_a4(a4, a3);
 
         for (i = 0; i < 4; i++) {
-          (*out)[enc_len++] = kB64Alphabet[a4[i]];
+          (*out)[enc_len++] = kBase64Alphabet[a4[i]];
         }
 
         i = 0;
@@ -41,7 +41,7 @@ class Base64 {
       a3_to_a4(a4, a3);
 
       for (j = 0; j < i + 1; j++) {
-        (*out)[enc_len++] = kB64Alphabet[a4[j]];
+        (*out)[enc_len++] = kBase64Alphabet[a4[j]];
       }
 
       while ((i++ < 3)) {
