@@ -42,7 +42,7 @@ long GenerateRandomNumber(long min, long max) {
   return rand() % (max - min) + min;
 }
 
-bool TestBase64(const std::string &input) {
+bool TestBase64(const std::string &input, bool strip_padding = false) {
   static std::string encoded;
   static std::string decoded;
 
@@ -50,6 +50,8 @@ bool TestBase64(const std::string &input) {
     std::cout << "Failed to encode input string" << std::endl;
     return false;
   }
+
+  if (strip_padding) Base64::StripPadding(&encoded);
 
   if (!Base64::Decode(encoded, &decoded)) {
     std::cout << "Failed to decode encoded string" << std::endl;
@@ -79,6 +81,18 @@ int main() {
     GenerateRandomString(&input, GenerateRandomNumber(100, 200));
 
     if (!TestBase64(input)) return -1;
+  }
+
+  for (size_t i = 0; i < TESTS; ++i) {
+    GenerateRandomAlphaNumString(&input, GenerateRandomNumber(100, 200));
+
+    if (!TestBase64(input, true)) return -1;
+  }
+
+  for (size_t i = 0; i < TESTS; ++i) {
+    GenerateRandomString(&input, GenerateRandomNumber(100, 200));
+
+    if (!TestBase64(input, true)) return -1;
   }
 
   return 0;

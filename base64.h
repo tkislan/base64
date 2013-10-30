@@ -119,6 +119,10 @@ class Base64 {
     return (n + 2 - ((n + 2) % 3)) / 3 * 4;
   }
 
+  static void StripPadding(std::string *in) {
+    while (!in->empty() && *(in->rbegin()) == '=') in->resize(in->size() - 1);
+  }
+
  private:
   static inline void a3_to_a4(unsigned char * a4, unsigned char * a3) {
     a4[0] = (a3[0] & 0xfc) >> 2;
