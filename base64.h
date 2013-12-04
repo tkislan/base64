@@ -11,7 +11,7 @@ class Base64 {
  public:
   static bool Encode(const std::string &in, std::string *out) {
     int i = 0, j = 0;
-    int enc_len = 0;
+    size_t enc_len = 0;
     unsigned char a3[3];
     unsigned char a4[4];
 
@@ -54,7 +54,7 @@ class Base64 {
 
   static bool Decode(const std::string &in, std::string *out) {
     int i = 0, j = 0;
-    int dec_len = 0;
+    size_t dec_len = 0;
     unsigned char a3[3];
     unsigned char a4[4];
 
