@@ -137,13 +137,13 @@ class Base64 {
     a3[2] = ((a4[2] & 0x3) << 6) + a4[3];
   }
 
-  static inline unsigned char b64_lookup(char c) {
+  static inline unsigned char b64_lookup(unsigned char c) {
     if(c >='A' && c <='Z') return c - 'A';
     if(c >='a' && c <='z') return c - 71;
     if(c >='0' && c <='9') return c + 4;
     if(c == '+') return 62;
     if(c == '/') return 63;
-    return -1;
+    return 255;
   }
 };
 
