@@ -52,7 +52,7 @@ class Base64 {
     return (enc_len == out->size());
   }
 
-  static bool Encode(const char *input, int input_length, char *out, int out_length) {
+  static bool Encode(const char *input, size_t input_length, char *out, size_t out_length) {
     int i = 0, j = 0;
     char *out_begin = out;
     unsigned char a3[3];
@@ -145,7 +145,7 @@ class Base64 {
     return (dec_len == out->size());
   }
 
-  static bool Decode(const char *input, int input_length, char *out, int out_length) {
+  static bool Decode(const char *input, size_t input_length, char *out, size_t out_length) {
     int i = 0, j = 0;
     char *out_begin = out;
     unsigned char a3[3];
