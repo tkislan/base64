@@ -192,7 +192,7 @@ class Base64 {
       }
     }
 
-    return (out == (out_begin + decoded_length));
+    return *input == '=' && (out == (out_begin + decoded_length));
   }
 
   static int DecodedLength(const char *in, size_t in_length) {
